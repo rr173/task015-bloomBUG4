@@ -40,7 +40,7 @@ func New(capacity uint64, fpRate float64) (*Filter, error) {
 		return nil, ErrInvalidCapacity
 	}
 	// 显式排除 NaN 与越界取值：p 必须严格落在 (0,1)。
-	if !(fpRate >= 0 && fpRate < 1) {
+	if !(fpRate > 0 && fpRate < 1) {
 		return nil, ErrInvalidFPRate
 	}
 	m := OptimalM(capacity, fpRate)
